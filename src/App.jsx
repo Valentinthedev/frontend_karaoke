@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { QrCode, CheckCircle, XCircle, Users, Ticket, BarChart3, Plus, Search, Printer, Download, RefreshCw } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.NODE_ENV === 'production'
+  ? 'https://backendkaraoke-production.up.railway.app'  // URL Railway
+  : 'http://localhost:5000/api';
+  
 
 export default function ConcertTicketSystem() {
   const [view, setView] = useState('admin');
