@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { QrCode, CheckCircle, XCircle, Users, Ticket, BarChart3, Plus, Search, Printer, Download, RefreshCw } from 'lucide-react';
 
-const API_URL = process.env.NODE_ENV === 'production'
-  ? 'https://backendkaraoke-production.up.railway.app'  // URL Railway
-  : 'http://localhost:5000/api';
+const BASE = process.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = BASE.endsWith('/api') ? BASE : `${BASE.replace(/\/$/, '')}/api`;
+
+console.log('API_URL ->', API_URL); // debug : verifier en prod via la console navigateur
   
 
 export default function ConcertTicketSystem() {
